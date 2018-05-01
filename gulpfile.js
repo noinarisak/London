@@ -82,6 +82,13 @@ gulp.task('browser-sync', ['fileinclude'], function() {
     browserSync.init({
         server: {
             baseDir: "./src/html-compiled/",
+            proxy: 'localhost:8081',
+        },
+        open: false,
+        host: process.env.IP,
+        port: process.env.PORT,
+        ui: {
+            port: 8082
         },
         middleware: simpleURLRewrite,
     });
@@ -91,6 +98,13 @@ gulp.task('browser-sync-dist', ['build'], function() {
     browserSync.init({
         server: {
             baseDir: "./dist/",
+            proxy: 'localhost:8081',
+        },
+        open: false,
+        host: process.env.IP,
+        port: process.env.PORT,
+        ui: {
+            port: 8082
         },
         middleware: simpleURLRewrite,
     });
